@@ -6,7 +6,9 @@ import os.path
 
 data = {}
 
-with open(os.path.abspath("chimera/preprocess.json")) as json_file:
+
+
+with open("./chimera/preprocess.json") as json_file:
   data = json.load(json_file)
 
 nan = data['relSESA']['0']
