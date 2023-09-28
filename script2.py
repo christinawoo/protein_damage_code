@@ -113,10 +113,10 @@ alphafold_errors = []
 # Number of data points
 length = len(data['gene_name_and_position'])
 
-for i in map(str, range(50)):
+for i in map(str, range(2000)):
 
     # How many PDBs there were originally for the data point
-    initial_obj_length = len(data['pdb_data_obj'])
+    initial_obj_length = len(data['pdb_data_obj'][i])
 
     # Define the uniprot id and aa position early
     uniprot_id = data['uniprot_id'][i]
@@ -214,24 +214,24 @@ for i in map(str, range(50)):
 
 
 # Write output to json
-with open('./chimera/output_all.json', 'w', encoding='utf-8') as f:
+with open('./chimera/1-2000output_all.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=4)
 
 # Write errors to error file
-with open('./chimera/errors_all.csv', 'w') as csvfile:
+with open('./chimera/1-2000errors_all.csv', 'w') as csvfile:
     fwriter = csv.writer(csvfile)
 
     for x in errors:
         fwriter.writerow(x)
 
 
-with open('./chimera/errors_alphafold.csv', 'w') as csvfile:
+with open('./chimera/1-2000errors_alphafold.csv', 'w') as csvfile:
     fwriter = csv.writer(csvfile)
 
     for x in alphafold_errors:
         fwriter.writerow(x)
 
-with open('./chimera/errors_all_failed.csv', 'w') as csvfile:
+with open('./chimera/1-2000errors_all_failed.csv', 'w') as csvfile:
     fwriter = csv.writer(csvfile)
 
     for x in all_failed:
