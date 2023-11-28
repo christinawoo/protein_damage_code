@@ -113,6 +113,7 @@ alphafold_errors = []
 # Number of data points
 length = len(data['gene_name_and_position'])
 
+# ! This should be range length in future iterations
 for i in map(str, range(2000)):
 
     # How many PDBs there were originally for the data point
