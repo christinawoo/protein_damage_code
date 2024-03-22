@@ -13,7 +13,7 @@ def runCmd(cmd):
 data = {}
 
 # Load preprocessed JSON
-with open("/Users/matthewsu/Desktop/Chimera Computations/chimera/random5000/second 5000/random5000_second_output_all_111323.json") as json_file:
+with open("/Users/matthewsu/Desktop/Chimera Computations/chimera/s24-extensions/cleaved_n_docking/cleaved_n_docking_output_all_030124.json") as json_file:
     data = json.load(json_file)
 
 def get_ramachandran(uniprot, is_experimental, pdb_used, chain, aa_position, original_aa):
@@ -112,11 +112,11 @@ for i in map(str, range(length)):
         errors.append((uniprot_id, "Error in " + uniprot_id + '@' + position + ': ' + str(e)))
 
 # Write output to json
-with open('/Users/matthewsu/Desktop/Chimera Computations/chimera/random5000/second 5000/second5000_ramachandran_111323.json', 'w', encoding='utf-8') as f:
+with open('/Users/matthewsu/Desktop/Chimera Computations/chimera/s24-extensions/cleaved_n_docking/cleaved_n_docking_ramachandran_030124.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=4)
 
 # Write errors to error file
-with open('/Users/matthewsu/Desktop/Chimera Computations/chimera/random5000/second 5000/second5000_ramachandran_errors_all_111323.csv', 'w') as csvfile:
+with open('/Users/matthewsu/Desktop/Chimera Computations/chimera/s24-extensions/cleaved_n_docking/cleaved_n_docking_ramachandran_errors_all_030124.csv', 'w') as csvfile:
     fwriter = csv.writer(csvfile)
 
     for x in errors:

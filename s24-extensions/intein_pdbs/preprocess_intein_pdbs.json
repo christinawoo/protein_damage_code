@@ -1,0 +1,116 @@
+{
+    "gene_name_and_position": {
+        "0": "P72065198",
+        "1": "P72065198",
+        "2": "B2J06636",
+        "3": "B2J06636"
+    },
+    "uniprot_id": {
+        "0": "P72065",
+        "1": "P72065",
+        "2": "B2J066",
+        "3": "B2J066"
+    },
+    "aa_position": {
+        "0": 198,
+        "1": 198,
+        "2": 137,
+        "3": 137
+    },
+    "pdb_data_obj": {
+        "0": NaN,
+        "1": NaN,
+        "2": NaN,
+        "3": NaN
+    },
+    "uniprot_query_successful": {
+        "0": NaN,
+        "1": NaN,
+        "2": NaN,
+        "3": NaN
+    },
+    "uniprot_genes": {
+        "0": NaN,
+        "1": NaN,
+        "2": NaN,
+        "3": NaN
+    },
+    "uniprot_protein": {
+        "0": NaN,
+        "1": NaN,
+        "2": NaN,
+        "3": NaN
+    },
+    "analyzed_position": {
+        "0": NaN,
+        "1": NaN,
+        "2": NaN,
+        "3": NaN
+    },
+    "analyzed_aa": {
+        "0": NaN,
+        "1": NaN,
+        "2": NaN,
+        "3": NaN
+    },
+    "calculated_SES": {
+        "0": NaN,
+        "1": NaN,
+        "2": NaN,
+        "3": NaN
+    },
+    "relSESA": {
+        "0": NaN,
+        "1": NaN,
+        "2": NaN,
+        "3": NaN
+    },
+    "distance": {
+        "0": NaN,
+        "1": NaN,
+        "2": NaN,
+        "3": NaN
+    },
+    "is_experimental": {
+        "0": NaN,
+        "1": NaN,
+        "2": NaN,
+        "3": NaN
+    },
+    "pdb_id": {
+        "0": "4oz6",
+        "1": "1am2",
+        "2": "4qfq",
+        "3": "4kl5"
+    },
+    "pdb_chain": {
+        "0": "A",
+        "1": "A",
+        "2": "B",
+        "3": "B"
+    },
+    "pdb_resolution": {
+        "0": NaN,
+        "1": NaN,
+        "2": NaN,
+        "3": NaN
+    },
+    "pdb_experimental_method": {
+        "0": NaN,
+        "1": NaN,
+        "2": NaN,
+        "3": NaN
+    },
+    "ramachandran_phi": {
+        "0": NaN,
+        "1": NaN,
+        "2": NaN,
+        "3": NaN
+    },
+    "ramachandran_psi": {
+        "0": NaN,
+        "1": NaN,
+        "2": NaN,
+        "3": NaN
+    }
+}
