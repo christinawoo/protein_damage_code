@@ -1,0 +1,65 @@
+{
+    "truncated_sequence": {
+        "0": "MATNWGSLLQDKQQLEELARQAVDRALAEGVLLRTSQEPTSSEVVSYAPFTLFPSLVPSALLEQAYAVQMDFNLLVDAVSQNAAFLEQTLSSTIKQDDFTARLFDIHKQVLKEGIAQTVFLGLNRSDYMFQRSADGSPALKQIEINTISASFGGLASRTPAVHRHVLSVLSKTKEAGKILSNNPSKGLALGIAKAWELYGSPNALVLLIAQEKERNIFDQRAIENELLARNIHVIRRTFEDISEKGSLDQDRRLFVDGQEIAVVYFRDGYMPRQYSLQNWEARLLLERSHAAKCPDIATQLAGTKKVQQELSRPGMLEMLLPGQPEAVARLRATFAGLYSLDVGEEGDQAIAEALAAPSRFVLKPQREGGGNNLYGEEMVQALKQLKDSEERASYILMEKIEPEPFENCLLRPGSPARVVQCISELGIFGVYVRQEKTLVMNKHVGHLLRTKAIEHADGGVAAGVAVLDN"
+    },
+    "gene_name_and_position": {
+        "0": "P48637470"
+    },
+    "uniprot_id": {
+        "0": "P48637"
+    },
+    "analyzed_aa_position": {
+        "0": 470
+    },
+    "pdb_data_obj": {
+        "0": NaN
+    },
+    "uniprot_query_successful": {
+        "0": NaN
+    },
+    "uniprot_genes": {
+        "0": "['GSS']"
+    },
+    "uniprot_protein": {
+        "0": "Glutathione synthetase"
+    },
+    "analyzed_aa": {
+        "0": "ASN"
+    },
+    "calculated_SES": {
+        "0": 42.65782928466797
+    },
+    "relSESA": {
+        "0": 0.47114378330996975
+    },
+    "distance": {
+        "0": 3.9946243878492504
+    },
+    "is_experimental": {
+        "0": NaN
+    },
+    "pdb_used": {
+        "0": NaN
+    },
+    "pdb_chain": {
+        "0": "A"
+    },
+    "pdb_resolution": {
+        "0": NaN
+    },
+    "pdb_experimental_method": {
+        "0": NaN
+    },
+    "ramachandran_phi": {
+        "0": -147.817540499405
+    },
+    "ramachandran_psi": {
+        "0": null
+    },
+    "ramachandran_switched_to_alphafold": {
+        "0": NaN
+    },
+    "alphafold_switch_aa_used": {
+        "0": NaN
+    }
+}

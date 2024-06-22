@@ -1,0 +1,41 @@
+{
+    "gene_name_and_position": {
+        "0": "P48637470"
+    },
+    "uniprot_id": {
+        "0": "P48637"
+    },
+    "aa_position": {
+        "0": 470
+    },
+    "analyzed_position": {
+        "0": "470"
+    },
+    "analyzed_aa": {
+        "0": "ASN"
+    },
+    "pdb_id": {
+        "0": "2hgs"
+    },
+    "pdb_chain": {
+        "0": "A"
+    },
+    "uniprot_genes": {
+        "0": "['GSS']"
+    },
+    "relSESA": {
+        "0": 0.16950714378952264
+    },
+    "distance": {
+        "0": 4.757615579258164
+    },
+    "calculated_SES": {
+        "0": 15.347346305847168
+    },
+    "ramachandran_phi": {
+        "0": -138.6062197796905
+    },
+    "ramachandran_psi": {
+        "0": 141.38902887465193
+    }
+}
