@@ -1,32 +1,33 @@
 """
-    Script for performing selected calculations (or recalculations) of relative solvent exposed surface area (relSESA), distance from side chain N to backbone carbonyl C, and backbone torsion angles for Asn residues in intein PDBs.
+    Script for calculating relative solvent exposed surface area (relSESA), distance from side chain N to backbone carbonyl C, and backbone torsion angles for Asn and Gln residues in Alphafold predicted models of proteins truncated at the cN cleavage site.
 
-    Unlike relSESA_distance_calculation.py and ramachandran.py, this script requires a desired PDB code to be specified for each residue, and it will fail upon encountering errors instead of logging them to an error file. Thus, this script is best used for small datasets containing residues already analyzed in the large datasets cN_cleavage_data, deamidation_data, or random_10000_ASN_combined. It can be used to recalculate parameters for those residues using different PDBs from the ones in the original datasets.
+    The input PDBs should be generated via Alphafold and must be organized in a folder with the following structure:
 
-    Unlike recalculate.py, this script does not renumber the PDB sequence based on the Uniprot database, and it does not check for "off by one" errors caused by methionine trimming in the PDB structures.
+    - Root folder (e.g. "Alphafold_cleaved_N_predictions")
+        - {gene_name_and_position}
+            - {gene_name_and_position}_selected_prediction.pdb
+    
+    where gene_name_and_position is the concatenated Uniprot accession of protein and the position of Asn/Gln to be analyzed. E.g., for Uniprot accession P00761 and Asn position 105, gene_name_and_position should be P00761105, and the PDB should be located at Alphafold_cleaved_N_predictions/P00761105/P00761105_selected_prediction.pdb
 
-    The input to this script should be a JSON file obtained from preprocess_analyze_intein_pdbs.py, which should accept an Excel file containing the following columns:
-        uniprot_id: Required. Uniprot accession of protein to be analyzed
-        aa_position: Required. Position of Asn/Gln of interest within protein
-        pdb_id: Required. PDB code to use
-        pdb_chain: Required. PDB chain to use
+    The input to this script should be a JSON file obtained from preprocess_excel_to_json.py, which should accept an Excel file containing the following columns:
+        
+        gene_name_and_position: Required. See description above.
+        analyzed_aa_position: Required. Position of Asn/Gln of interest within protein
+        pdb_chain: Required. Chain in PDB to use (usually A)
 
-        analyzed_position: Blank
         analyzed_aa: Blank
         calculated_SES: Blank
         relSESA: Blank
         distance: Blank
         ramachandran_phi: Blank
         ramachandran_psi: Blank
-
 """
+
+# Absolute path to root folder (e.g. Alphafold_cleaved_N_predictions) containing input PDBs (see description above).
+PDB_ROOT_FOLDER_PATH = ""
 
 # Path to input file (should include the desired filename ending in .json)
 INPUT_JSON_FILEPATH = ""
-
-# Name of first key of JSON in input file (e.g. the leftmost column of original excel file)
-# uniprot_id should be generally suitable
-INPUT_INDEX_NAME = ""
 
 # Path to output JSON file (should include the desired filename ending in .json)
 OUTPUT_JSON_FILEPATH = ""
@@ -36,32 +37,29 @@ import csv
 import numpy as np
 from chimerax.core.commands import run
 
-def isNaN(num):
-    return num != num
-
 def runCmd(cmd):
     return run(session, cmd)
 
-
-def analyze(uniprot, pdb, chain, aa_position):
-    print(uniprot)
+def analyze(gene_name_and_position, chain, aa_position):
+    print(gene_name_and_position)
     print(aa_position)
     # Load structure
     # Load pdb
-    runCmd("open " + pdb)
+    runCmd(f'open "{PDB_ROOT_FOLDER_PATH}/{gene_name_and_position}/{gene_name_and_position}_selected_prediction.pdb"')
 
-    # Remove other chains
-    runCmd("sel /" + chain)
-    runCmd("select ~sel")
-    runCmd("delete sel")
+    # ! Removed this for cleaved n docking, as no cleanup is needed.
+    # # Remove other chains
+    # runCmd("sel /" + chain)
+    # runCmd("select ~sel")
+    # runCmd("delete sel")
 
-    # Delete solvent
-    runCmd("delete solvent")
+    # # Delete solvent
+    # runCmd("delete solvent")
 
-    # Delete ligand
-    runCmd("delete ligand")
+    # # Delete ligand
+    # runCmd("delete ligand")
 
-    # ! Removed this for intein pdbs to avoid renumbering errors, as exact AA positions to be analyzed in the PDB are known.
+    # ! Removed this for cleaved n docking to avoid renumbering errors, as exact AA positions to be analyzed in the PDB are known.
     # Renumber according to uniprot sequence
     # runCmd("setattr model res_numbering uniprot")
 
@@ -76,10 +74,10 @@ def analyze(uniprot, pdb, chain, aa_position):
     # If AA position not in protein, Chimera will return an empty array
     if len(residue_names) == 0:
         raise FloatingPointError('AA position not found in protein: ' +
-                                 uniprot + ', ' + chain_id + '@' + str(aa_position))
+                                 gene_name_and_position + ', ' + chain_id + '@' + str(aa_position))
     chosen_residue = residue_names[0]
 
-    # ! Commented out the below check for preceding residues for the intein PDB check, because the exact residue position is already known
+    # ! Commented out the below check for preceding residues for cleaved N docking, because the exact residue position is already known
     # Try the preceding residue if the given residue is not an N/Q. Accounts for methionine trimming
     # if chosen_residue != 'ASN' and chosen_residue != 'GLN':
     #     former_position = str(int(aa_position) - 1)
@@ -146,20 +144,20 @@ with open(INPUT_JSON_FILEPATH) as json_file:
     data = json.load(json_file)
 
 # Number of data points
-length = len(data[INPUT_INDEX_NAME])
+length = len(data['gene_name_and_position'])
 
 for i in map(str, range(length)):
 
     # Define the uniprot id and aa position early
-    uniprot_id = data['uniprot_id'][i]
-    aa_position = data['aa_position'][i]
-    pdb = data['pdb_id'][i]
+    gene_name_and_position = data['gene_name_and_position'][i]
+    aa_position = data['analyzed_aa_position'][i]
     chain = data['pdb_chain'][i]
 
-    analysis = analyze(uniprot_id, pdb, chain, aa_position)
+    analysis = analyze(gene_name_and_position, chain, aa_position)
 
     # Any errors will be caught above
-    data['analyzed_position'][i] = analysis['analyzed_position']
+    # ! Removed this because you the position to be analyzed is already known
+    # data['analyzed_position'][i] = analysis['analyzed_position']
     data['analyzed_aa'][i] = analysis['aa']
     data['calculated_SES'][i] = analysis['ses']
     data['relSESA'][i] = analysis['relSESA']

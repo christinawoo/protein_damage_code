@@ -1,11 +1,9 @@
 """
-    Script for performing selected calculations (or recalculations) of relative solvent exposed surface area (relSESA), distance from side chain N to backbone carbonyl C, and backbone torsion angles for Asn residues in intein PDBs.
+    Script for performing selected calculations (or recalculations) of relative solvent exposed surface area (relSESA), distance from side chain N to backbone carbonyl C, and backbone torsion angles for Asn and Gln residues.
 
     Unlike relSESA_distance_calculation.py and ramachandran.py, this script requires a desired PDB code to be specified for each residue, and it will fail upon encountering errors instead of logging them to an error file. Thus, this script is best used for small datasets containing residues already analyzed in the large datasets cN_cleavage_data, deamidation_data, or random_10000_ASN_combined. It can be used to recalculate parameters for those residues using different PDBs from the ones in the original datasets.
 
-    Unlike recalculate.py, this script does not renumber the PDB sequence based on the Uniprot database, and it does not check for "off by one" errors caused by methionine trimming in the PDB structures.
-
-    The input to this script should be a JSON file obtained from preprocess_analyze_intein_pdbs.py, which should accept an Excel file containing the following columns:
+    The input to this script should be a JSON file obtained from preprocess_excel_to_json.py, which should accept an Excel file containing the following columns:
         uniprot_id: Required. Uniprot accession of protein to be analyzed
         aa_position: Required. Position of Asn/Gln of interest within protein
         pdb_id: Required. PDB code to use
@@ -36,9 +34,6 @@ import csv
 import numpy as np
 from chimerax.core.commands import run
 
-def isNaN(num):
-    return num != num
-
 def runCmd(cmd):
     return run(session, cmd)
 
@@ -61,9 +56,8 @@ def analyze(uniprot, pdb, chain, aa_position):
     # Delete ligand
     runCmd("delete ligand")
 
-    # ! Removed this for intein pdbs to avoid renumbering errors, as exact AA positions to be analyzed in the PDB are known.
     # Renumber according to uniprot sequence
-    # runCmd("setattr model res_numbering uniprot")
+    runCmd("setattr model res_numbering uniprot")
 
     # Set chain identifier
     chain_id = "/" + chain
@@ -79,19 +73,18 @@ def analyze(uniprot, pdb, chain, aa_position):
                                  uniprot + ', ' + chain_id + '@' + str(aa_position))
     chosen_residue = residue_names[0]
 
-    # ! Commented out the below check for preceding residues for the intein PDB check, because the exact residue position is already known
     # Try the preceding residue if the given residue is not an N/Q. Accounts for methionine trimming
-    # if chosen_residue != 'ASN' and chosen_residue != 'GLN':
-    #     former_position = str(int(aa_position) - 1)
-    #     former_residue = runCmd(
-    #         "sel " + chain_id + ":" + former_position).residues.names[0]
-    #     if former_residue == 'ASN' or former_residue == 'GLN':
-    #         chosen_residue = former_residue
-    #         chosen_position = former_position
-    #     else:
-    #         # Although not really a FPE, this error class is not used in python so we can uniquely catch this one
-    #         raise FloatingPointError('N/Q not found in this AA or the preceding one: ' +
-    #                                  uniprot + ', ' + chain_id + '@' + str(aa_position))
+    if chosen_residue != 'ASN' and chosen_residue != 'GLN':
+        former_position = str(int(aa_position) - 1)
+        former_residue = runCmd(
+            "sel " + chain_id + ":" + former_position).residues.names[0]
+        if former_residue == 'ASN' or former_residue == 'GLN':
+            chosen_residue = former_residue
+            chosen_position = former_position
+        else:
+            # Although not really a FPE, this error class is not used in python so we can uniquely catch this one
+            raise FloatingPointError('N/Q not found in this AA or the preceding one: ' +
+                                     uniprot + ', ' + chain_id + '@' + str(aa_position))
 
     # Calculate distance
     side_chain_N = chain_id + ':' + chosen_position + \
