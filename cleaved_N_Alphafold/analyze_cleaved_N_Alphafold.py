@@ -1,5 +1,5 @@
 """
-    Script for calculating relative solvent exposed surface area (relSESA), distance from side chain N to backbone carbonyl C, and backbone torsion angles for Asn and Gln residues in Alphafold predicted models of proteins truncated at the cN cleavage site.
+    Script for calculating relative solvent excluded surface area (relSESA), distance from side chain N to backbone carbonyl C, and backbone torsion angles for Asn and Gln residues in Alphafold predicted models of proteins truncated at the cN cleavage site.
 
     The input PDBs should be generated via Alphafold and must be organized in a folder with the following structure:
 

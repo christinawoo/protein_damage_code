@@ -1,5 +1,5 @@
 """
-    Script for performing selected calculations (or recalculations) of relative solvent exposed surface area (relSESA), distance from side chain N to backbone carbonyl C, and backbone torsion angles for Asn residues in intein PDBs.
+    Script for performing selected calculations (or recalculations) of relative solvent excluded surface area (relSESA), distance from side chain N to backbone carbonyl C, and backbone torsion angles for Asn residues in intein PDBs.
 
     Unlike relSESA_distance_calculation.py and ramachandran.py, this script requires a desired PDB code to be specified for each residue, and it will fail upon encountering errors instead of logging them to an error file. Thus, this script is best used for small datasets containing residues already analyzed in the large datasets cN_cleavage_data, deamidation_data, or random_10000_ASN_combined. It can be used to recalculate parameters for those residues using different PDBs from the ones in the original datasets.
 

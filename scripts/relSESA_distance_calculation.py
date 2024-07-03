@@ -1,5 +1,5 @@
 """
-Script for calculating relative solvent exposed surface area (relSESA) and distance from side chain N to backbone carbonyl C for Asn and Gln residues.
+Script for calculating relative solvent excluded surface area (relSESA) and distance from side chain N to backbone carbonyl C for Asn and Gln residues.
 
 For each residue, requires the Uniprot ID of parent protein, amino acid position, and the results of a Uniprot database search of suitable PDB data (PDB id, chain, resolution) for the residue of interest.
 
