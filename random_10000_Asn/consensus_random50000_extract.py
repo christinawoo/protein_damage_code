@@ -1,4 +1,4 @@
-#To derive the consensus of 7-mer sequence around all N in the human proteome
+#To derive the consensus of 7-mer sequence around all N or Q in the human proteome
 
 import numpy as np
 import pandas as pd
