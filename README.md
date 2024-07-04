@@ -41,7 +41,7 @@ Error files generated in the calculation are located in the `errors` folder and 
 
 ## `recalculate`
 
-Selected recalculations of relevant parameters for Asn and Gln residues from the above datasets, but using specific PDBs not initially analyzed to unify the analysis of separate subunits from the same protein (e.g. hemoglobin) to the same structure. The following scripts were utilized (in order):
+Selected recalculations of relevant parameters for Asn and Gln residues from the above datasets, but using specific PDBs not initially analyzed to unify the different subunits of the same protein or substituting with more extensively cited structures. The following scripts were utilized (in order):
 
 1. `scripts/preprocess_excel_to_json.py` (Python)
 2. `scripts/analyze_specific_pdb.py` (ChimeraX)
