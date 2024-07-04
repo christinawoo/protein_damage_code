@@ -1,4 +1,4 @@
-#To extract 7-mer sequence around all N or Q in the human proteome
+#To extract 7-mer sequences around all N or Q in the human proteome
 
 import numpy as np
 import pandas as pd
@@ -14,14 +14,12 @@ for i in range(length):
      for index in range(len(sequence[i])):
              if sequence[i][index]==character:
                     consensus.append(sequence[i][index-3:index+4])
-print(len(consensus)) #406641
+print(len(consensus)) 
 
 
-#write all 7-mer sequences into csv file
 consensusallN = pd.DataFrame(consensus)
 consensusallN.to_csv('consensus_allN.csv', index=False)
 
-#randomly extract 50,000 sequences
 Ndata = pd.read_csv(r'/Users/wenqingxu/consensus_allN.csv')
 Nseq = Ndata['0'].tolist()
 
