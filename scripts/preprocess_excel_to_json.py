@@ -19,7 +19,7 @@
     
   For use with analyze_cleaved_N_Alphafold.py, the Excel spreadsheet should contain the following columns:
 
-    gene_name_and_position: Required. Concatenated Uniprot accession of protein and the position of Asn/Gln to be analyzed. E.g., for Uniprot accession P68871 and Asn position 58, gene_name_and_position should be P6887158.
+    gene_name_and_position: Required. Concatenated Uniprot accession of protein and the position of Asn/Gln to be analyzed. E.g., for Uniprot accession P68871 and Asn position 58, gene_name_and_position should be denoted as P6887158.
         
     analyzed_aa_position: Required. Position of Asn/Gln of interest within protein
     pdb_chain: Required. Chain in PDB to use (usually A)
