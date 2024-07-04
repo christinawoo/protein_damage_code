@@ -12,7 +12,7 @@ Global scripts used across different datasets.
 
 ## `cN_cleavage`
 
-Analysis of Asn/Gln residues forming cN via internal cleavage mechanism. A table of cN internal cleavage PTM occurrences obtained from proteomics data was fed through the following scripts (in order):
+Analysis of Asn/Gln residues forming the C-terminal cyclic imide via internal cleavage mechanism (–18.015 Da). A table of cN internal cleavage PTM occurrences obtained from proteomics data was fed through the following scripts (in order):
 
 1. `scripts/fetch_pdb_data.ipynb` (Python)
 2. `scripts/relSESA_distance_calculation.py` (ChimeraX)
@@ -25,7 +25,7 @@ Error files generated in the calculation are located in the `errors` folder and 
 
 ## `deamidation`
 
-Analysis of Asn/Gln residues forming cN via deamidation mechanism. A table of deamidation PTM occurrences obtained from spectroscopic data was fed through the same sequence of scripts as in the `cN_cleavage` dataset.
+Analysis of Asn/Gln residues that are deamidated (+0.984 Da). A table of deamidation PTM occurrences obtained from spectroscopic data was fed through the same sequence of scripts as in the `cN_cleavage` dataset.
 
 The resulting dataset is `deamidation_data.xlsx`.
 
@@ -41,7 +41,7 @@ Error files generated in the calculation are located in the `errors` folder and 
 
 ## `recalculate`
 
-Selected recalculations of relevant parameters for Asn and Gln residues from the above datasets, but using specific PDBs not initially analyzed. The following scripts were utilized (in order):
+Selected recalculations of relevant parameters for Asn and Gln residues from the above datasets, but using specific PDBs not initially analyzed to unify the analysis of separate subunits from the same protein (e.g. hemoglobin) to the same structure. The following scripts were utilized (in order):
 
 1. `scripts/preprocess_excel_to_json.py` (Python)
 2. `scripts/analyze_specific_pdb.py` (ChimeraX)
@@ -49,18 +49,18 @@ Selected recalculations of relevant parameters for Asn and Gln residues from the
 
 The resulting datasets are `recalculate_first.xlsx` and `recalculate_second.xlsx`.
 
-## `inteins`
+## `intein`
 
-Analysis of Asn residues in selected intein PDBs. The following scripts were utilized (in order):
+Analysis of Asn residue in Mxe GyrA intein PDBs. The following scripts were utilized (in order):
 
-1. `inteins/preprocess_analyze_intein_pdbs.py` (Python)
-2. `inteins/analyze_intein_pdbs.py` (ChimeraX)
+1. `intein/preprocess_analyze_intein_pdbs.py` (Python)
+2. `intein/analyze_intein_pdbs.py` (ChimeraX)
 
 The resulting dataset is `intein_cN_data.xlsx`.
 
 ## `cleaved_N_Alphafold`
 
-Analysis of terminal Asn residues in Alphafold predicted structures of proteins truncated at the cN cleavage site.
+Analysis of terminal Asn residues in Alphafold predicted structures of proteins truncated at the most frequent cN cleavage sites.
 
 The dataset is `Alphafold_cleaved_N_data_pLDDT.xlsx`, which was generated using the following scripts (in order):
 
