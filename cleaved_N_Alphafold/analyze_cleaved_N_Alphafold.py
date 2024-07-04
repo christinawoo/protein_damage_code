@@ -7,7 +7,7 @@
         - {gene_name_and_position}
             - {gene_name_and_position}_selected_prediction.pdb
     
-    where gene_name_and_position is the concatenated Uniprot accession of protein and the position of Asn/Gln to be analyzed. E.g., for Uniprot accession P68871 and Asn position 58, gene_name_and_position should be P6887158, and the PDB should be located at Alphafold_cleaved_N_predictions/P6887158/P6887158_selected_prediction.pdb
+    where gene_name_and_position is the concatenated Uniprot accession of protein and the position of Asn/Gln to be analyzed. E.g., for Uniprot accession P68871 and Asn position 58, gene_name_and_position should be denoted as P6887158, and the PDB should be located at Alphafold_cleaved_N_predictions/P6887158/P6887158_selected_prediction.pdb
 
     The input to this script should be a JSON file obtained from preprocess_excel_to_json.py, which should accept an Excel file containing the following columns:
         
