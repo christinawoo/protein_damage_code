@@ -5,7 +5,7 @@ import pandas as pd
 
 swissprot = pd.read_csv(r'/Users/wenqingxu/swissprot_human_proteome.csv')
 sequence = swissprot['Sequence'].tolist()
-print(len(sequence)) #20379
+print(len(sequence)) 
 
 length = len(sequence)
 character = 'N' #to extract Q, simply replace 'N' to 'Q'
