@@ -18,10 +18,12 @@ Analysis of Asn/Gln residues forming the C-terminal cyclic imide via internal cl
 2. `scripts/relSESA_distance_calculation.py` (ChimeraX)
 3. `scripts/ramachandran.py` (ChimeraX)
 4. `scripts/json_to_excel.ipynb` (Python)
-
+   
 The resulting dataset is `cN_cleavage_data.xlsx`.
 
 Error files generated in the calculation are located in the `errors` folder and are documented in `scripts/fetch_pdb_data.ipynb`, `scripts/relSESA_distance_calculation.py`, and `scripts/ramachandran.py`.
+
+The AlphaFold predictions were then fed through `scripts/plddt_calc.py` (Python) to calculate the pLDDT of target Asn residues and filtered for pLDDT≥70.
 
 ## `deamidation`
 
