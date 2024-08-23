@@ -8,7 +8,7 @@ sequence = swissprot['Sequence'].tolist()
 print(len(sequence)) 
 
 length = len(sequence)
-character = 'N' #to extract Q, simply replace 'N' to 'Q'
+character = 'N' # to extract Q, simply replace 'N' to 'Q'
 consensus = []
 for i in range(length):
      for index in range(len(sequence[i])):
