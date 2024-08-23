@@ -63,9 +63,9 @@ def write_results_to_csv(results, output_csv_path):
         writer.writerows(results)
 
 if __name__ == "__main__":
-    csv_file_path = 'your path.csv' 
-    cif_directory = 'your directory' 
-    output_csv_path = 'your output.csv'
+    csv_file_path = '' 
+    cif_directory = '' 
+    output_csv_path = ''
 
     results = process_csv_and_cif(csv_file_path, cif_directory)
     write_results_to_csv(results, output_csv_path)
