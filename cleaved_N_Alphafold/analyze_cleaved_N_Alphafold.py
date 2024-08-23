@@ -1,5 +1,5 @@
 """
-    Script for calculating relative solvent excluded surface area (relSESA), distance from side chain N to backbone carbonyl C, and backbone torsion angles for Asn and Gln residues in Alphafold predicted models of proteins truncated at the cN cleavage site.
+    Script for calculating relSESA, distance, and backbone torsion angles for Asn and Gln residues in Alphafold predicted models of proteins truncated at the cN site.
 
     The input PDBs should be generated via Alphafold and must be organized in a folder with the following structure:
 
@@ -7,12 +7,12 @@
         - {gene_name_and_position}
             - {gene_name_and_position}_selected_prediction.pdb
     
-    where gene_name_and_position is the concatenated Uniprot accession of protein and the position of Asn/Gln to be analyzed. E.g., for Uniprot accession P68871 and Asn position 58, gene_name_and_position should be denoted as P6887158, and the PDB should be located at Alphafold_cleaved_N_predictions/P6887158/P6887158_selected_prediction.pdb
+    where gene_name_and_position is the concatenated Uniprot accession of protein and the position of residue to be analyzed. E.g., for Uniprot accession P68871 and Asn position 58, gene_name_and_position should be denoted as P6887158, and the PDB should be located at Alphafold_cleaved_N_predictions/P6887158/P6887158_selected_prediction.pdb
 
     The input to this script should be a JSON file obtained from preprocess_excel_to_json.py, which should accept an Excel file containing the following columns:
         
         gene_name_and_position: Required. See description above.
-        analyzed_aa_position: Required. Position of Asn/Gln of interest within protein
+        analyzed_aa_position: Required. Position of residue of interest within the analyzed protein
         pdb_chain: Required. Chain in PDB to use (usually A)
 
         analyzed_aa: Blank
@@ -78,7 +78,7 @@ def analyze(gene_name_and_position, chain, aa_position):
     chosen_residue = residue_names[0]
 
     # ! Commented out the below check for preceding residues for cleaved N docking, because the exact residue position is already known
-    # Try the preceding residue if the given residue is not an N/Q. Accounts for methionine trimming
+    # Try the preceding residue if the given residue is not an N/Q, which accounts for methionine trimming
     # if chosen_residue != 'ASN' and chosen_residue != 'GLN':
     #     former_position = str(int(aa_position) - 1)
     #     former_residue = runCmd(
