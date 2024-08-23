@@ -41,6 +41,8 @@ The resulting datasets are `random_5000_first/random_5000_first_data.xlsx` and `
 
 Error files generated in the calculation are located in the `errors` folder and are documented in `scripts/fetch_pdb_data.ipynb`, `scripts/relSESA_distance_calculation.py`, and `scripts/ramachandran.py`.
 
+The random extraction of 50000 Asn residues for the consensus sequence generation was performed using `scripts/consensus_random50000_extract.py` (Python).
+
 ## `recalculate`
 
 Selected recalculations of relevant parameters for Asn and Gln residues from the above datasets, but using specific PDBs not initially analyzed to unify the different subunits of the same protein or substitute with more extensively cited structures. The following scripts were utilized (in order):
