@@ -3,7 +3,7 @@
 
   For use with process_intein_pdbs.py, the Excel spreadsheet should contain the following columns:
     uniprot_id: Required. Uniprot accession of protein to be analyzed
-    aa_position: Required. Position of Asn/Gln of interest within protein
+    aa_position: Required. Position of residue of interest within the analyzed protein
     pdb_id: Required. PDB code to use
     pdb_chain: Required. PDB chain to use
 
