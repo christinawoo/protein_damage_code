@@ -2,7 +2,7 @@
 
 This repository contains data on surface exposure (`relSESA`), distance from side chain amide N to backbone amide carbonyl (`distance`), and backbone torsion angles (`ramachandran_psi`, `ramachandran+phi`) for Asn and Gln residues from various datasets, as well as the code used to calculate these data. Relevant scripts are located in `/scripts` if used across multiple datasets and are otherwise co-located with the corresponding data. Scripts were either ran in UCSF ChimeraX or in a Python notebook/instance.
 
-The repository also contains Alphafold predicted structures for truncated sequences arising from internal cleavage at Asn, as well as graphics used to visualize these structures.
+The repository also contains Alphafold predicted structures for truncated sequences arising from intramolecular cleavage at Asn, as well as graphics used to visualize these structures.
 
 # Folders
 
@@ -12,7 +12,7 @@ Global scripts used across different datasets.
 
 ## `cN_cleavage`
 
-Analysis of Asn/Gln residues forming the C-terminal cyclic imide via internal cleavage mechanism (–18.015 Da). A table of cN internal cleavage PTM occurrences obtained from proteomics data was fed through the following scripts (in order):
+Analysis of Asn/Gln residues forming the C-terminal cyclic imide via intramolecular cleavage mechanism (semi-N tryptic peptides, –18.015 Da for N or Q at the peptide C-terminus). A table of cN PTM occurrences obtained from proteomics data was fed through the following scripts (in order):
 
 1. `scripts/fetch_pdb_data.ipynb` (Python)
 2. `scripts/relSESA_distance_calculation.py` (ChimeraX)
@@ -23,11 +23,11 @@ The resulting dataset is `cN_cleavage_data.xlsx`.
 
 Error files generated in the calculation are located in the `errors` folder and are documented in `scripts/fetch_pdb_data.ipynb`, `scripts/relSESA_distance_calculation.py`, and `scripts/ramachandran.py`.
 
-The AlphaFold predictions were then fed through `scripts/plddt_calc.py` (Python) to calculate the pLDDT of target Asn residues and filtered for pLDDT≥70.
+The AlphaFold predictions were then fed through `scripts/plddt_calc.py` (Python) to calculate the pLDDT of analyzed Asn/Gln residues and filtered for pLDDT≥70.
 
 ## `deamidation`
 
-Analysis of Asn/Gln residues that are deamidated (+0.984 Da). A table of deamidation PTM occurrences obtained from spectroscopic data was fed through the same sequence of scripts as in the `cN_cleavage` dataset.
+Analysis of Asn/Gln residues that are deamidated (fully tryptic peptides, +0.984 Da for N or Q). A table of deamidation PTM occurrences obtained from spectroscopic data was fed through the same sequence of scripts as in the `cN_cleavage` dataset.
 
 The resulting dataset is `deamidation_data.xlsx`.
 
@@ -76,7 +76,7 @@ Additional graphics and code used to generate graphics files are in the `graphic
 
 ### `GSS-N470 (2hgs)`
 
-Comparison of the protein GSS (pdb `2hgs`) with the Alphafold prediction for the truncated variant (amino acids 1-470). 
+Comparison of the protein GSS (pdb `2hgs`) with the Alphafold prediction for the truncated variant (amino acids 1–470). 
 
 Analysis of the full-length protein (pdb `2hgs`) is in `GSS_original_data.xlsx` and was obtained in a similar manner to the `recalculate` dataset.
 
