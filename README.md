@@ -1,8 +1,8 @@
 # Introduction
 
-This repository contains data on surface exposure (`relSESA`), distance from side chain amide N to backbone amide carbonyl (`distance`), and backbone torsion angles (`ramachandran_psi`, `ramachandran+phi`) for Asn and Gln residues from various datasets, as well as the code used to calculate these data. Relevant scripts are located in `/scripts` if used across multiple datasets and are otherwise co-located with the corresponding data. Scripts were either ran in UCSF ChimeraX or in a Python notebook/instance.
+This repository contains data on surface exposure (relative solvent-excluded surface area, `relSESA`), distance from side chain amide N to backbone amide carbonyl (`distance`), and backbone torsion angles that allow mapping on a Ramachandran plot (`ramachandran_psi`, `ramachandran+phi`) for Asn and Gln residues from various datasets, as well as the codes used to calculate these data. Relevant scripts are located in `/scripts` if used across multiple datasets and are otherwise co-located with the corresponding data. Scripts were either ran in UCSF ChimeraX or in a Python notebook/instance.
 
-The repository also contains Alphafold predicted structures for truncated sequences arising from intramolecular cleavage at Asn, as well as graphics used to visualize these structures.
+This repository also contains Alphafold predicted structures for truncated sequences arising from intramolecular cleavage at Asn, as well as graphics used to visualize these structures.
 
 # Folders
 
