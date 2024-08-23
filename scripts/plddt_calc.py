@@ -1,3 +1,5 @@
+#For calculation of pLDDT score for the residue of interest in an AlphaFold predicted structure.
+
 import re
 import csv
 import os
@@ -61,9 +63,9 @@ def write_results_to_csv(results, output_csv_path):
         writer.writerows(results)
 
 if __name__ == "__main__":
-    csv_file_path = '/Users/yuli/Downloads/UP000005640_9606_HUMAN_v4/Cleavage_All.csv' 
-    cif_directory = '/Users/yuli/Downloads/UP000005640_9606_HUMAN_v4/' 
-    output_csv_path = '/Users/yuli/Downloads/UP000005640_9606_HUMAN_v4/Cleavage_All_output.csv'
+    csv_file_path = 'your path.csv' 
+    cif_directory = 'your directory' 
+    output_csv_path = 'your output.csv'
 
     results = process_csv_and_cif(csv_file_path, cif_directory)
     write_results_to_csv(results, output_csv_path)
