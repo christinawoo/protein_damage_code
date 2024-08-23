@@ -1,5 +1,5 @@
 """
-    Script for performing selected calculations (or recalculations) of relative solvent excluded surface area (relSESA), distance from side chain N to backbone carbonyl C, and backbone torsion angles for Asn residues in intein PDBs.
+    Script for performing selected calculations of relSESA, distance, and backbone torsion angles for Asn residues in intein PDBs.
 
     Unlike relSESA_distance_calculation.py and ramachandran.py, this script requires a desired PDB code to be specified for each residue, and it will fail upon encountering errors instead of logging them to an error file. Thus, this script is best used for small datasets containing residues already analyzed in the large datasets cN_cleavage_data, deamidation_data, or random_10000_ASN_combined. It can be used to recalculate parameters for those residues using different PDBs from the ones in the original datasets.
 
@@ -80,7 +80,7 @@ def analyze(uniprot, pdb, chain, aa_position):
     chosen_residue = residue_names[0]
 
     # ! Commented out the below check for preceding residues for the intein PDB check, because the exact residue position is already known
-    # Try the preceding residue if the given residue is not an N/Q. Accounts for methionine trimming
+    # Try the preceding residue if the given residue is not an N/Q, which accounts for methionine trimming
     # if chosen_residue != 'ASN' and chosen_residue != 'GLN':
     #     former_position = str(int(aa_position) - 1)
     #     former_residue = runCmd(
