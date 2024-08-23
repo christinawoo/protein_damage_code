@@ -1,4 +1,4 @@
-#For calculation of pLDDT score for the residue of interest in an AlphaFold predicted structure.
+# For calculation of pLDDT score for the residue of interest in an AlphaFold predicted structure.
 
 import re
 import csv
