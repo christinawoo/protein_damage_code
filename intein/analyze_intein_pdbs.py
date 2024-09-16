@@ -5,6 +5,8 @@
 
     Unlike recalculate.py, this script does not renumber the PDB sequence based on the Uniprot database, and it does not check for "off by one" errors caused by methionine trimming in the PDB structures.
 
+    Note that the code assumes the residue is either Asn or Gln and will not work accurately with other residues.
+
     The input to this script should be a JSON file obtained from preprocess_analyze_intein_pdbs.py, which should accept an Excel file containing the following columns:
         uniprot_id: Required. Uniprot accession of protein to be analyzed
         aa_position: Required. Position of Asn/Gln of interest within protein

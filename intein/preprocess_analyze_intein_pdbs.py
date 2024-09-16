@@ -1,6 +1,8 @@
 """
   Script for converting .xlsx files to .json files, primarily for use as input to analyze_intein_pdbs.py.
 
+  Note that the code assumes the residue is either Asn or Gln and will not work accurately with other residues.
+
   For use with analyze_intein_pdbs.py, the Excel spreadsheet should contain the following columns:
     uniprot_id: Required. Uniprot accession of protein to be analyzed
     aa_position: Required. Position of residue of interest within the analyzed protein
