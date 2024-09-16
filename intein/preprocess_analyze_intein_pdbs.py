@@ -1,7 +1,7 @@
 """
-  Script for converting .xlsx files to .json files, primarily for use as input to process_intein_pdbs.py.
+  Script for converting .xlsx files to .json files, primarily for use as input to analyze_intein_pdbs.py.
 
-  For use with process_intein_pdbs.py, the Excel spreadsheet should contain the following columns:
+  For use with analyze_intein_pdbs.py, the Excel spreadsheet should contain the following columns:
     uniprot_id: Required. Uniprot accession of protein to be analyzed
     aa_position: Required. Position of residue of interest within the analyzed protein
     pdb_id: Required. PDB code to use
